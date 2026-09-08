@@ -1,0 +1,175 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --surface: #ffffff;
+    --surface-muted: #f8fafc;
+    --surface-hover: #f1f5f9;
+    --border-color: #e2e8f0;
+    --border-strong: #cbd5e1;
+
+    --primary-50: #faf5ff;
+    --primary-100: #f3e8ff;
+    --primary-500: #a855f7;
+    --primary-600: #9333ea;
+    --primary-700: #7e22ce;
+
+    --accent-500: #3b82f6;
+    --accent-600: #2563eb;
+
+    --text: #0f172a;
+    --text-muted: #64748b;
+    --text-faint: #94a3b8;
+
+    --success: #10b981;
+    --warning: #f59e0b;
+    --danger: #ef4444;
+
+    --shadow-sm: 0 1px 2px 0 rgb(15 23 42 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(15 23 42 / 0.07), 0 2px 4px -2px rgb(15 23 42 / 0.06);
+    --shadow-lg: 0 10px 15px -3px rgb(15 23 42 / 0.08), 0 4px 6px -4px rgb(15 23 42 / 0.05);
+
+    --radius-sm: 0.375rem;
+    --radius-md: 0.5rem;
+    --radius-lg: 0.75rem;
+
+    --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  }
+
+  .dark {
+    --surface: #0f172a;
+    --surface-muted: #1e293b;
+    --surface-hover: #334155;
+    --border-color: #334155;
+    --border-strong: #475569;
+
+    --primary-50: #3b0764;
+    --primary-100: #581c87;
+    --primary-500: #a855f7;
+    --primary-600: #c084fc;
+    --primary-700: #d8b4fe;
+
+    --accent-500: #60a5fa;
+    --accent-600: #93c5fd;
+
+    --text: #f8fafc;
+    --text-muted: #cbd5e1;
+    --text-faint: #94a3b8;
+
+    --success: #34d399;
+    --warning: #fbbf24;
+    --danger: #f87171;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply bg-slate-50 text-slate-900 font-sans antialiased transition-colors duration-200 dark:bg-slate-950 dark:text-slate-50;
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-strong) transparent;
+  }
+
+  *::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background: var(--border-strong);
+    border-radius: 9999px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: transparent;
+  }
+}
+
+@layer components {
+  .card {
+    @apply rounded-xl border border-slate-200 bg-white transition-shadow dark:border-slate-800 dark:bg-slate-900;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .card-hover:hover {
+    @apply border-slate-300 dark:border-slate-700;
+    box-shadow: var(--shadow-md);
+  }
+
+  .card-padded {
+    @apply p-6;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center rounded-lg px-4 py-2 text-sm font-medium transition-all focus:outline-none focus:ring-2 focus:ring-offset-2;
+  }
+
+  .btn-primary {
+    @apply btn bg-gradient-to-r from-primary-600 to-accent-600 text-white hover:from-primary-700 hover:to-accent-700 focus:ring-primary-500 disabled:from-slate-300 disabled:to-slate-300 disabled:cursor-not-allowed shadow-sm hover:shadow-md dark:disabled:from-slate-700 dark:disabled:to-slate-700;
+  }
+
+  .btn-secondary {
+    @apply btn border border-slate-300 bg-white text-slate-700 hover:bg-slate-50 focus:ring-primary-500 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700;
+  }
+
+  .btn-ghost {
+    @apply btn text-slate-500 hover:bg-slate-100 hover:text-slate-700 focus:ring-slate-400 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-200;
+  }
+
+  .btn-stepper {
+    @apply inline-flex items-center justify-center border border-slate-300 bg-slate-50 px-3 text-slate-600 transition-colors hover:bg-slate-100 disabled:opacity-40 disabled:cursor-not-allowed dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700;
+  }
+
+  .input {
+    @apply block w-full rounded-lg border-slate-300 border py-2 pl-3 pr-3 text-base text-slate-900 shadow-sm placeholder:text-slate-400 focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500/20 sm:text-sm dark:border-slate-700 dark:bg-slate-800 dark:text-slate-50 dark:placeholder:text-slate-500;
+  }
+
+  .label {
+    @apply block text-sm font-medium text-slate-700 dark:text-slate-300;
+  }
+
+  .section-title {
+    @apply text-lg font-semibold leading-6 text-slate-900 dark:text-slate-50;
+  }
+
+  .kicker {
+    @apply text-xs font-medium uppercase tracking-wider text-slate-500 dark:text-slate-400;
+  }
+}
+
+@layer utilities {
+  .animate-fade-in {
+    animation: fade-in 0.4s ease both;
+  }
+
+  .animate-scale-in {
+    animation: scale-in 0.25s ease both;
+  }
+
+  .animate-slide-up {
+    animation: slide-up 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scale-in {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
